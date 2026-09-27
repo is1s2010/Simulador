@@ -9,17 +9,21 @@ function calcular() {
     
     let capacidad = calcularCapacidadPago(disponible);
     document.getElementById("spnCapacidadPago").innerText = "USD " + capacidad.toFixed(2); 
+    
     // --- Lógica del Interés Simple ---
-    let monto = parseInt(document.getElementById("txtMonto").value);
-    let plazo = parseInt(document.getElementById("txtPlazo").value); 
-    let tasa = parseInt(document.getElementById("txtTasaInteres").value); 
+    // SE CAMBIÓ parseInt A parseFloat PARA PERMITIR DECIMALES
+    let monto = parseFloat(document.getElementById("txtMonto").value);
+    let plazo = parseFloat(document.getElementById("txtPlazo").value); 
+    let tasa = parseFloat(document.getElementById("txtTasaInteres").value); 
     
     let interes = calcularInteresSimple(monto, tasa, plazo);
     document.getElementById("spnInteresPagar").innerText = interes.toFixed(2);
 
     // --- Lógica para el Total a Pagar ---
     let total = calcularTotalPagar(monto, interes);
-    document.getElementById("spnTotalPrestamo").innerText = total; 
+    // SE AGREGÓ toFixed(2) PARA MOSTRAR DECIMALES CORRECTAMENTE
+    document.getElementById("spnTotalPrestamo").innerText = total.toFixed(2); 
+    
     // --- Lógica para la Cuota Mensual ---
     let cuota = calcularCuotaMensual(total, plazo);
     document.getElementById("spnCuotaMensual").innerText = cuota.toFixed(2); 
@@ -34,6 +38,7 @@ function calcular() {
     }
 }
 
+// SE AGREGÓ LA FUNCIÓN REINICIAR PARA LIMPIAR LA PANTALLA
 function reiniciar() {
     // Limpiar campos de entrada
     document.getElementById("txtIngresos").value = "";

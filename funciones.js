@@ -1,4 +1,5 @@
 //AQUI TODA LA LOGICA DE LAS FUNCIONES DEL NEGOCIO
+
 function calcularDisponible(ingresos, egresos) {
     let valor = ingresos - egresos;
     
@@ -42,9 +43,7 @@ function calcularCuotaMensual(total, plazoAnios) {
 function aprobarCredito(capacidadPago, cuotaMensual) {
     if (capacidadPago > cuotaMensual) {
         return true;
-
     } else {
-
         return false;
     }
 }
