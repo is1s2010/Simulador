@@ -31,11 +31,20 @@ function calcularTotalPagar(monto, interes) {
 }
 
 function calcularCuotaMensual(total, plazoAnios) {
-    // Calcular el número total de meses (1 año = 12 meses)
     let meses = plazoAnios * 12;
     
     // Calcular y retornar la cuota mensual
     let cuotaMensual = total / meses;
     
     return cuotaMensual;
+}
+
+function aprobarCredito(capacidadPago, cuotaMensual) {
+    if (capacidadPago > cuotaMensual) {
+        return true;
+
+    } else {
+
+        return false;
+    }
 }
