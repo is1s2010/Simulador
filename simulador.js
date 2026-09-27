@@ -1,33 +1,35 @@
 // AQUI EL JAVASCRIPT PARA MANIPULAR EL HTML
 
 function calcular() {
-    // Lógica de Disponibilidad y Capacidad de Pago 
-    let ingresos = parseFloat(document.getElementById("txtIngresos").value);
-    let egresos = parseFloat(document.getElementById("txtEgresos").value);
-    
+    // --- Lógica de Disponibilidad y Capacidad de Pago ---
+    let ingresos = parseFloat(document.getElementById("txtIngresos").value); 
+    let egresos = parseFloat(document.getElementById("txtEgresos").value); 
     let disponible = calcularDisponible(ingresos, egresos);
-    document.getElementById("lblDisponibleValor").innerText = "USD " + disponible.toFixed(2);
+    document.getElementById("spnDisponible").innerText = "USD " + disponible.toFixed(2); 
     
     let capacidad = calcularCapacidadPago(disponible);
-    document.getElementById("lblCapacidadValor").innerText = "USD " + capacidad.toFixed(2);
-
-    // Lógica del Interés Simple 
+    document.getElementById("spnCapacidadPago").innerText = "USD " + capacidad.toFixed(2); 
+    // --- Lógica del Interés Simple ---
     let monto = parseInt(document.getElementById("txtMonto").value);
-    let plazo = parseInt(document.getElementById("txtPlazo").value);
-    let tasa = parseInt(document.getElementById("txtTasa").value);
+    let plazo = parseInt(document.getElementById("txtPlazo").value); 
+    let tasa = parseInt(document.getElementById("txtTasaInteres").value); 
     
     let interes = calcularInteresSimple(monto, tasa, plazo);
-    document.getElementById("lblInteresValor").innerText = interes.toFixed(2);
+    document.getElementById("spnInteresPagar").innerText = interes.toFixed(2);
 
-    //Lógica para el Total a Pagar
+    // --- Lógica para el Total a Pagar ---
     let total = calcularTotalPagar(monto, interes);
-    document.getElementById("lblTotalValor").innerText = total;
-
-    //Nueva lógica para la Cuota Mensual
-    // 1. Invocar a calcularCuotaMensual
+    document.getElementById("spnTotalPrestamo").innerText = total; 
+    // --- Lógica para la Cuota Mensual ---
     let cuota = calcularCuotaMensual(total, plazo);
+    document.getElementById("spnCuotaMensual").innerText = cuota.toFixed(2); 
+
+    // --- Lógica para Aprobación del Crédito ---
+    let esAprobado = aprobarCredito(capacidad, cuota);
     
-    // 2. Mostrar en pantalla, en el componente lblCuotaValor
-    // Se utiliza toFixed(2) para cumplir con el formato de los casos de prueba 
-    document.getElementById("lblCuotaValor").innerText = cuota.toFixed(2);
+    if (esAprobado) {
+        document.getElementById("spnEstadoCredito").innerText = "CREDITO APROBADO"; 
+    } else {
+        document.getElementById("spnEstadoCredito").innerText = "CREDITO RECHAZADO"; 
+    }
 }
