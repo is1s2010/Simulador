@@ -1,70 +1,249 @@
+/* =========================================
+   NUEVA PALETA DE COLORES VIBRANTE
+   ========================================= */
+:root {
+    --gradient-bg: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    --gradient-brand: linear-gradient(135deg, #6366f1 0%, #a855f7 100%, #ec4899 100%);
+    --bg-card: rgba(255, 255, 255, 0.92); /* Blanco con ligera transparencia */
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --border-light: #cbd5e1;
+    
+    /* Colores de acento */
+    --accent-indigo: #4f46e5;
+    --accent-teal: #0d9488;
+    --accent-rose: #f43f5e;
+    --bg-input: #f8fafc;
+}
+
+/* =========================================
+   CONFIGURACIÓN BASE
+   ========================================= */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f6f8;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--gradient-bg);
+    background-attachment: fixed; /* El fondo no se mueve al scrollear */
     margin: 0;
-    padding: 0;
+    padding: 20px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
+/* =========================================
+   CONTENEDOR PRINCIPAL
+   ========================================= */
 .container {
-    width: 400px;
-    margin: 40px auto;
-    padding: 20px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+    padding: 35px 30px;
+    background-color: var(--bg-card);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), 
+                inset 0 0 0 1px rgba(255,255,255,0.5); /* Efecto cristal */
+    backdrop-filter: blur(10px); /* Desenfoque detrás de la tarjeta */
+    box-sizing: border-box;
 }
 
+/* =========================================
+   LOGO VIBRANTE
+   ========================================= */
+.brand-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+
+.logo-icon {
+    width: 32px;
+    height: 32px;
+    background: var(--gradient-brand);
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(99, 102, 241, 0.4);
+}
+
+.logo-icon::after {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background-color: #fff;
+    border-radius: 4px;
+    top: 9px;
+    left: 9px;
+    transform: rotate(45deg);
+}
+
+.logo-name {
+    font-size: 26px;
+    font-weight: 300;
+    color: var(--text-main);
+    letter-spacing: -0.5px;
+}
+
+.logo-name span {
+    font-weight: 800;
+    background: var(--gradient-brand);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* =========================================
+   TIPOGRAFÍA
+   ========================================= */
 h1 {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-main);
 }
 
 h2 {
-    margin-top: 20px;
-    font-size: 18px;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    font-size: 13px;
+    color: var(--accent-indigo);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border-bottom: 2px dashed #e2e8f0;
+    padding-bottom: 8px;
 }
 
 label {
     display: block;
-    margin-top: 10px;
-    font-weight: bold;
+    margin-top: 15px;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--text-main);
 }
 
+/* =========================================
+   INPUTS CON ESTILO
+   ========================================= */
 input {
     width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+    padding: 12px 15px;
+    margin-top: 6px;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-color: var(--bg-input);
     box-sizing: border-box;
+    font-size: 16px;
+    color: var(--text-main);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
 }
 
+input:focus {
+    outline: none;
+    background-color: #ffffff;
+    border-color: var(--accent-indigo);
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15);
+}
+
+/* =========================================
+   RESULTADOS (Cajas de colores)
+   ========================================= */
 p {
-    margin-top: 10px;
+    margin-top: 12px;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f1f5f9;
+    padding: 12px 15px;
+    border-radius: 10px;
+    border-left: 4px solid var(--text-muted);
+}
+
+/* Color específico para resultados de crédito */
+p.resultado-highlight {
+    background-color: #f0fdfa; /* Cian súper claro */
+    border-left-color: var(--accent-teal);
+    color: #0f766e;
+}
+
+/* Color para el estado final */
+p.resultado-status {
+    background-color: #fff1f2; /* Rosa súper claro */
+    border-left-color: var(--accent-rose);
+    color: #be123c;
+    font-weight: bold;
 }
 
 span {
-    font-weight: bold;
-    color: #2c3e50;
+    font-weight: 800;
+    font-size: 15px;
+    color: inherit; /* Hereda el color de la caja para combinar */
 }
 
+#spnDisponible, #spnCapacidadPago {
+    color: var(--accent-indigo);
+}
+
+/* =========================================
+   BOTONES VIBRANTES
+   ========================================= */
 .buttons {
-    margin-top: 20px;
+    margin-top: 35px;
     display: flex;
     justify-content: space-between;
+    gap: 15px;
 }
 
 button {
-    width: 48%;
-    padding: 10px;
+    flex: 1;
+    padding: 15px;
     border: none;
-    border-radius: 5px;
-    background-color: #3498db;
-    color: white;
-    font-weight: bold;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 15px;
     cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-button:hover {
-    background-color: #2980b9;
+#btnCalcularCredito {
+    background: var(--gradient-brand);
+    color: white;
+    box-shadow: 0 8px 15px rgba(99, 102, 241, 0.3);
+}
+
+#btnCalcularCredito:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 12px 20px rgba(99, 102, 241, 0.4);
+}
+
+#btnReiniciar {
+    background-color: #f1f5f9;
+    color: var(--text-main);
+}
+
+#btnReiniciar:hover {
+    background-color: #e2e8f0;
+    color: var(--accent-rose);
+}
+
+/* =========================================
+   MEDIA QUERIES (Responsivo)
+   ========================================= */
+@media (max-width: 400px) {
+    .container {
+        padding: 25px 20px;
+    }
+    
+    .buttons {
+        flex-direction: column;
+    }
+    
+    button {
+        width: 100%;
+        padding: 16px;
+    }
 }

@@ -3,12 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulador de Crédito</title>
+    <title>Simulador de Crédito - AuraBank</title>
     <link rel="stylesheet" href="simulador.css">
 </head>
 <body>
 
     <div class="container">
+        <!-- Logo ficticio: AuraBank -->
+        <div class="brand-logo">
+            <div class="logo-icon"></div>
+            <div class="logo-name">Aura<span>Bank</span></div>
+        </div>
+
         <h1>Simulador de Crédito</h1>
 
         <h2>Datos financieros</h2>
@@ -31,19 +37,17 @@
         <label for="txtTasaInteres">Tasa de interés:</label>
         <input type="text" id="txtTasaInteres">
 
-        <p>Interés a pagar: <span id="spnInteresPagar"></span></p>
-        <p>Total préstamo: <span id="spnTotalPrestamo"></span></p>
-        <p>Cuota mensual: <span id="spnCuotaMensual"></span></p>
-        <p>Estado de crédito: <span id="spnEstadoCredito">ANALIZANDO...</span></p>
+        <p class="resultado-highlight">Interés a pagar: <span id="spnInteresPagar"></span></p>
+        <p class="resultado-highlight">Total préstamo: <span id="spnTotalPrestamo"></span></p>
+        <p class="resultado-highlight">Cuota mensual: <span id="spnCuotaMensual"></span></p>
+        <p class="resultado-status">Estado de crédito: <span id="spnEstadoCredito">ANALIZANDO...</span></p>
 
         <div class="buttons">
-            <!-- Se agregó el evento onclick para ejecutar la función calcular -->
             <button id="btnCalcularCredito" onclick="calcular()">Calcular Crédito</button>
             <button id="btnReiniciar">Reiniciar</button>
         </div>
     </div>
 
-    <!-- Se enlazan los archivos de JavaScript al final del body -->
     <script src="funciones.js"></script>
     <script src="simulador.js"></script>
 </body>
