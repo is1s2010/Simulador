@@ -22,3 +22,10 @@ function calcularInteresSimple(monto, tasa, plazoAnios) {
     
     return interes;
 }
+
+function calcularTotalPagar(monto, interes) {
+    // Suma el monto solicitado, el interés generado y USD 100 fijos 
+    let totalPagar = monto + interes + 100;
+    
+    return totalPagar;
+}
