@@ -9,10 +9,16 @@ function calcularDisponible(ingresos, egresos) {
     return valor;
 }
 
-
 function calcularCapacidadPago(montoDisponible) {
     // Calcula la capacidad de pago que tiene el cliente (50% del valor disponible)
     let capacidadPago = montoDisponible * 0.50;
     
     return capacidadPago;
+}
+
+function calcularInteresSimple(monto, tasa, plazoAnios) {
+    // Calcula el interés multiplicando el plazo * monto * (tasa / 100)
+    let interes = plazoAnios * monto * (tasa / 100);
+    
+    return interes;
 }
