@@ -1,7 +1,7 @@
 // AQUI EL JAVASCRIPT PARA MANIPULAR EL HTML
 
 function calcular() {
-    // --- Lógica previa (Ingresos, Egresos, Capacidad de Pago) 
+    // Lógica de Disponibilidad y Capacidad de Pago 
     let ingresos = parseFloat(document.getElementById("txtIngresos").value);
     let egresos = parseFloat(document.getElementById("txtEgresos").value);
     
@@ -11,14 +11,18 @@ function calcular() {
     let capacidad = calcularCapacidadPago(disponible);
     document.getElementById("lblCapacidadValor").innerText = "USD " + capacidad.toFixed(2);
 
-    // 1. Leer los valores de Monto solicitado, Plazo en años, Tasa anual simple, como enteros
+    //  Lógica del Interés Simple 
     let monto = parseInt(document.getElementById("txtMonto").value);
     let plazo = parseInt(document.getElementById("txtPlazo").value);
     let tasa = parseInt(document.getElementById("txtTasa").value);
     
-    // 2. Llamar a la función calcularInteresSimple y guardar el retorno en una variable
     let interes = calcularInteresSimple(monto, tasa, plazo);
-    
-    // 3. Mostrar en pantalla, en el componente lblInteresValor
     document.getElementById("lblInteresValor").innerText = interes.toFixed(2);
+
+    // Nueva lógica para el Total a Pagar 
+    // 1. Invocar a calcularTotalPagar pasando el monto y el interés generado
+    let total = calcularTotalPagar(monto, interes);
+    
+    // 2. Mostrar en pantalla, en el componente lblTotalValor
+    document.getElementById("lblTotalValor").innerText = total;
 }
