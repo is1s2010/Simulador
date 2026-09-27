@@ -8,3 +8,11 @@ function calcularDisponible(ingresos, egresos) {
     
     return valor;
 }
+
+
+function calcularCapacidadPago(montoDisponible) {
+    // Calcula la capacidad de pago que tiene el cliente (50% del valor disponible)
+    let capacidadPago = montoDisponible * 0.50;
+    
+    return capacidadPago;
+}
